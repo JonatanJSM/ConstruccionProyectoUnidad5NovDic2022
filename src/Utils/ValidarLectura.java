@@ -14,23 +14,29 @@ import org.json.simple.parser.ParseException;
  * @author fer98
  */
 public class ValidarLectura {
-    public Object readJSON(String pathToJSONFile){
-        Object readResult = null;
+    private Object readResult;
+    private JSONObject jsonObject;
+    private JSONArray arrayJSONobject;
+    
+    
+    public boolean readJSON(String pathToJSONFile){
         try{
             FileReader reader = new FileReader(pathToJSONFile);
             JSONParser jsonParser = new JSONParser();
             readResult = jsonParser.parse(reader);
+            jsonObject = extractJSONObject(readResult);
         }catch(FileNotFoundException e){
-            e.printStackTrace();
+            System.out.println("Archivo no encontrado");
         }catch(IOException e){
             e.printStackTrace();
         }catch(ParseException e){
-            e.printStackTrace();
+            System.out.println("Estructura del JSON incorrecta\n");
+            return false;
         }
-        return readResult;
+        return true;
     }
     
-    public JSONObject extractJSONObject(Object obj){
+    private JSONObject extractJSONObject(Object obj){
         JSONObject jsonObj = null;
         try{
             jsonObj  = new JSONObject((Map) obj);
@@ -39,23 +45,28 @@ public class ValidarLectura {
         return jsonObj;
     }
     
-    public JSONObject extractJSONObjectbyKey(JSONObject obj, String key){
+    public JSONObject extractJSONObjectbyKey(String key){
         JSONObject employeeObject = new JSONObject();
+        employeeObject = (JSONObject) jsonObject.get(key);
         try{
-            employeeObject = (JSONObject) obj.get(key);
-            //JSONObject arr = (JSONObject) employeeObject.get("employees");
+            JSONObject arr = (JSONObject) employeeObject.get(key);
         }catch(Exception e){
+            System.out.println("No esta definido "+key+" en el archivo JSON\n");
         }
         return employeeObject;
     }
     
     
-    public JSONArray extractEmployeeJSONArray(JSONObject jsonObj, String arrayName){
+    public boolean extractEmployeeJSONArray(JSONObject jsonObj, String arrayName){
         JSONArray jsonArray = new JSONArray();
+        jsonArray = (JSONArray) jsonObj.get(arrayName);
         try{
-            jsonArray = (JSONArray) jsonObj.get(arrayName);
+            jsonArray.isEmpty();
+            arrayJSONobject = jsonArray;
         }catch(Exception e){
+            System.out.println("No esta difnido "+arrayName+" como arreglo en el JSON");
+            return false;
         }
-        return jsonArray;
+        return true;
     }
 }

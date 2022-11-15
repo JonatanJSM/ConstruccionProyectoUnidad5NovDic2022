@@ -23,31 +23,28 @@ public class ValidarLecturaTest {
 
     @Test
     public void testReadJSON() {
-        Object obj = validacionJSON.readJSON(path);
-        System.out.println(obj);
-        assertFalse(obj == null);
-    }
-    
-    @Test
-    public void testExtractJSONObject() {
-        JSONObject jsonObject = validacionJSON.extractJSONObject(validacionJSON.readJSON(path));
-        System.out.println(jsonObject);
-        assertFalse(jsonObject == null);
+        System.out.println(" +Probando parseo general JSON");
+        boolean obj = validacionJSON.readJSON(path);
+        assertTrue(obj);
     }
     
     @Test
     public void testExtractJSONObjectbyKey() {
+        System.out.println("+ Probando exitencia de employees");
+        validacionJSON.readJSON(path);
+        
         JSONObject employeeObject = new JSONObject();
-        employeeObject = validacionJSON.extractJSONObjectbyKey(validacionJSON.extractJSONObject(validacionJSON.readJSON(path)), "employees");
-        System.out.println(employeeObject);
+        employeeObject = validacionJSON.extractJSONObjectbyKey("employees");
         assertFalse(employeeObject == null);
     }
     
     @Test
     public void testExtractEmployeeJSONArray() {
-        JSONObject employeeObject = validacionJSON.extractJSONObjectbyKey(validacionJSON.extractJSONObject(validacionJSON.readJSON(path)), "employees");
-        JSONArray employeeArray = validacionJSON.extractEmployeeJSONArray(employeeObject, "employee");
-        System.out.println(employeeArray); 
-        assertFalse(employeeArray == null);
+        System.out.println("+ Probando exitencia arreglo de employee");
+        validacionJSON.readJSON(path);
+        JSONObject employeeObject = validacionJSON.extractJSONObjectbyKey("employees");
+        
+        boolean employeeArray = validacionJSON.extractEmployeeJSONArray(employeeObject, "employee"); 
+        assertTrue(employeeArray);
     }
 }
