@@ -56,7 +56,6 @@ public class ValidarLectura {
         return employeeObject;
     }
     
-    
     public boolean extractEmployeeJSONArray(JSONObject jsonObj, String arrayName){
         JSONArray jsonArray = new JSONArray();
         jsonArray = (JSONArray) jsonObj.get(arrayName);
@@ -69,4 +68,25 @@ public class ValidarLectura {
         }
         return true;
     }
+    
+    public boolean extracEmployeeInfo(){
+        JSONArray employeeList = arrayJSONobject;
+        int i = 0; boolean result=true;
+        for (Object exployye: employeeList) {
+            JSONObject auxEmployee = (JSONObject) exployye;
+            if(!validateEmployee(auxEmployee)){
+                i++;
+                System.out.print("Algun atributo del empleado "+ i+" es incorrecto");
+                result = false;
+                break;
+            }
+            i++;
+        }
+        return result;
+    }
+    
+    private boolean validateEmployee(JSONObject employee){
+        return !(!employee.containsKey("id") || !employee.containsKey("firstName") || !employee.containsKey("lastName") || !employee.containsKey("photo"));
+    }
+    
 }

@@ -47,4 +47,15 @@ public class ValidarLecturaTest {
         boolean employeeArray = validacionJSON.extractEmployeeJSONArray(employeeObject, "employee"); 
         assertTrue(employeeArray);
     }
+    
+    @Test
+    public void testValidateEmployye(){
+        System.out.println("+ Probando exitencia de los atributos employees");
+        validacionJSON.readJSON(path);
+        JSONObject employeeObject = validacionJSON.extractJSONObjectbyKey("employees");
+        validacionJSON.extractEmployeeJSONArray(employeeObject, "employee"); 
+        
+        boolean verificationResult = validacionJSON.extracEmployeeInfo();
+        assertTrue(verificationResult);
+    }
 }
