@@ -86,7 +86,14 @@ public class ValidarLectura {
     }
     
     private boolean validateEmployee(JSONObject employee){
-        return !(!employee.containsKey("id") || !employee.containsKey("firstName") || !employee.containsKey("lastName") || !employee.containsKey("photo"));
+        if(!employee.containsKey("id") || !employee.containsKey("firstName") || !employee.containsKey("lastName") || !employee.containsKey("photo")){
+            return false;
+        }else{
+            if(employee.get("id")=="" || employee.get("firstName") == "" || employee.get("lastName")=="" || employee.get("photo") == ""){
+               return false;
+            }
+        }
+        return true;
     }
     
 }
