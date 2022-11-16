@@ -63,7 +63,7 @@ public class ValidarLectura {
             jsonArray.isEmpty();
             arrayJSONobject = jsonArray;
         }catch(Exception e){
-            System.out.println("No esta difnido "+arrayName+" como arreglo en el JSON");
+            System.out.println("No esta definido "+arrayName+" como arreglo en el JSON");
             return false;
         }
         return true;
