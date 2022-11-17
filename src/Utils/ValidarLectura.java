@@ -17,7 +17,14 @@ public class ValidarLectura {
     private Object readResult;
     private JSONObject jsonObject;
     private JSONArray arrayJSONobject;
-    
+
+    public ValidarLectura(){}
+
+    public ValidarLectura(String pathToJSONFile){
+        readJSON(pathToJSONFile);
+        JSONObject employeeObject = extractJSONObjectbyKey("employees");
+        extractEmployeeJSONArray(employeeObject, "employee");
+    }
     
     public boolean readJSON(String pathToJSONFile){
         try{
@@ -63,7 +70,7 @@ public class ValidarLectura {
             jsonArray.isEmpty();
             arrayJSONobject = jsonArray;
         }catch(Exception e){
-            System.out.println("No esta difnido "+arrayName+" como arreglo en el JSON");
+            System.out.println("No esta definido "+arrayName+" como arreglo en el JSON");
             return false;
         }
         return true;
@@ -95,5 +102,8 @@ public class ValidarLectura {
         }
         return true;
     }
-    
+
+    public JSONArray getArrayJSONobject() {
+        return arrayJSONobject;
+    }
 }
