@@ -1,5 +1,12 @@
 package Utils;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
+
 public class Employee {
     private int id;
     private String firstName;
@@ -60,6 +67,19 @@ public class Employee {
     }
 
     public Object[] getEmployeeObjectArray(){
-        return new Object[] {id, firstName, lastName, photo};
+        JLabel jLabel = new JLabel();
+        File file = new File(photo);
+
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file);
+            ImageIcon imageIcon = new ImageIcon(bufferedImage);
+
+            jLabel.setIcon(imageIcon);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return new Object[] {id, firstName, lastName,jLabel};
     }
 }

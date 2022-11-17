@@ -18,6 +18,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
     DefaultTableModel tablaModelo1;
     public vistaPrincipal() {
         initComponents();
+        jTable1.setDefaultRenderer(Object.class,new imgTable());
+        jTable1.setRowHeight(50);
         tablaModelo1 = (DefaultTableModel) this.jTable1.getModel();
     }
 
