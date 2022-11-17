@@ -47,9 +47,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"17000", "Juan", "Santana", "direccionFoto"},
-                {"17001", "Pedro", "May", "direccionFoto"},
-                    {"17001", "Martin", "Mendez", "direccionFoto"}
+
             },
             new String [] {
                 "ID", "firstName", "lastName", "photo"

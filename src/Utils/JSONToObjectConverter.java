@@ -4,6 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class JSONToObjectConverter {
     private ArrayList<Employee> arrayEmployee = new ArrayList<>();
@@ -26,5 +27,9 @@ public class JSONToObjectConverter {
 
     public ArrayList<Employee> getArrayEmployee() {
         return arrayEmployee;
+    }
+
+    public Iterator<Employee> getIterator(){
+        return arrayEmployee.iterator();
     }
 }

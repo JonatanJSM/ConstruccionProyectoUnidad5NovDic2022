@@ -58,4 +58,8 @@ public class Employee {
     public boolean isNull(){
         return false;
     }
+
+    public Object[] getEmployeeObjectArray(){
+        return new Object[] {id, firstName, lastName, photo};
+    }
 }

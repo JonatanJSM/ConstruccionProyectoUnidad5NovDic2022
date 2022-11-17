@@ -1,5 +1,6 @@
 package proyectojson;
 
+import Controlador.controladorVistaPrincipal;
 import Utils.Employee;
 import Utils.JSONToObjectConverter;
 import Utils.NullEmployee;
@@ -19,23 +20,16 @@ public class ProyectoJSON {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        vistaPrincipal VistaPrincipal = new vistaPrincipal();
-        VistaPrincipal.setVisible(true);
-        //PRUEBAS EN EL MAIN, se puede omitir
-        ValidarLectura v = new ValidarLectura();
-        v.readJSON("json2.txt");
-        JSONObject employeeObject = v.extractJSONObjectbyKey("employees");
-        v.extractEmployeeJSONArray(employeeObject, "employee");
+        ValidarLectura v = new ValidarLectura("json2.txt");
         JSONToObjectConverter converter = new JSONToObjectConverter();
         converter.convertJSONtoArray(v.getArrayJSONobject());
-        System.out.println("----------------------------");
-        ArrayList<Employee> arrayEmps = new ArrayList<Employee>();
-        arrayEmps = converter.getArrayEmployee();
 
-        for (Employee emp : arrayEmps)
-        {
-            System.out.println(emp.toString());
-        }
+        vistaPrincipal VistaPrincipal = new vistaPrincipal();
+        controladorVistaPrincipal control = new controladorVistaPrincipal(VistaPrincipal, converter.getIterator());
+
+        VistaPrincipal.setVisible(true);
+
+
     }
     
 }

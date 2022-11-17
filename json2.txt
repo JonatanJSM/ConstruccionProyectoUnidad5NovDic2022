@@ -18,6 +18,12 @@
         "firstName": "Robert",
         "lastName": "Downey Jr.",
         "photo": "https://jsonformatter.org/img/Robert-Downey-Jr.jpg"
+      },
+      {
+         "id": "5",
+         "firstName": "Pedro",
+         "lastName": "Manzano",
+         "photo": "https://jsonformatter.org/img/Robert-Downey-Jr.jpg"
       }
     ]
   }
