@@ -6,6 +6,7 @@ import Utils.JSONToObjectConverter;
 import Utils.NullEmployee;
 import Utils.ValidarLectura;
 import org.json.simple.JSONObject;
+import vista.pantallaModificar;
 import vista.vistaPrincipal;
 
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class ProyectoJSON {
 
         VistaPrincipal.setVisible(true);
 
+        pantallaModificar pantalla = new pantallaModificar();
+        pantalla.setVisible(true);
 
     }
     
