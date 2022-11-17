@@ -95,5 +95,8 @@ public class ValidarLectura {
         }
         return true;
     }
-    
+
+    public JSONArray getArrayJSONobject() {
+        return arrayJSONobject;
+    }
 }
