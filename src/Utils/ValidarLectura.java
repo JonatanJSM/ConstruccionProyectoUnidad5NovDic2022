@@ -17,7 +17,14 @@ public class ValidarLectura {
     private Object readResult;
     private JSONObject jsonObject;
     private JSONArray arrayJSONobject;
-    
+
+    public ValidarLectura(){}
+
+    public ValidarLectura(String pathToJSONFile){
+        readJSON(pathToJSONFile);
+        JSONObject employeeObject = extractJSONObjectbyKey("employees");
+        extractEmployeeJSONArray(employeeObject, "employee");
+    }
     
     public boolean readJSON(String pathToJSONFile){
         try{
