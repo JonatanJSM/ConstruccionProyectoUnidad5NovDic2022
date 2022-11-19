@@ -16,6 +16,10 @@ import org.json.simple.parser.ParseException;
 public class ValidarLectura {
     private Object readResult;
     private JSONObject jsonObject;
+
+    public JSONObject getJsonObject(){
+        return this.jsonObject;
+    }
     private JSONArray arrayJSONobject;
 
     public ValidarLectura(){}
