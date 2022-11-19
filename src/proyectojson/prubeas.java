@@ -1,20 +1,19 @@
 package proyectojson;
 
-import Controlador.controladorVistaPrincipal;
 import Utils.JSONToObjectConverter;
 import Utils.ValidarLectura;
-import Utils.modificadorEmployee;
-import vista.vistaPrincipal;
+import Utils.employeeModifier;
 
 public class prubeas {
     public static void main(String[] args) {
-        modificadorEmployee modi = new modificadorEmployee();
+        employeeModifier modi = new employeeModifier();
+        String[] modificador = {"0","","Pedro","hola"};
 
         ValidarLectura v = new ValidarLectura("json2.txt");
         JSONToObjectConverter converter = new JSONToObjectConverter();
 
         System.out.println("El arreglo antes   : "+ v.getJsonObject());
-        modi.modi(v.getArrayJSONobject());
+        modi.modifyEmployee(v.getArrayJSONobject(),modificador);
         System.out.println("El arreglo final es: "+ v.getJsonObject());
 
     }
