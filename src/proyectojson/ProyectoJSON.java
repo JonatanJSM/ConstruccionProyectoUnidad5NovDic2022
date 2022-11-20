@@ -26,12 +26,12 @@ public class ProyectoJSON {
         converter.convertJSONtoArray(v.getArrayJSONobject());
 
         vistaPrincipal VistaPrincipal = new vistaPrincipal();
-        controladorVistaPrincipal control = new controladorVistaPrincipal(VistaPrincipal, converter.getIterator());
+        controladorVistaPrincipal control = new controladorVistaPrincipal(VistaPrincipal, converter.getArrayEmployee());
 
         VistaPrincipal.setVisible(true);
 
-        pantallaModificar pantalla = new pantallaModificar();
-        pantalla.setVisible(true);
+        //pantallaModificar pantalla = new pantallaModificar();
+        //pantalla.setVisible(true);
 
     }
     

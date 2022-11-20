@@ -16,7 +16,7 @@ public class pantallaModificar extends JFrame{
         setTitle("Modificando employee");
         setSize(650,300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
+        //setVisible(true);
     }
 
     public JTextField getTextField1(){
