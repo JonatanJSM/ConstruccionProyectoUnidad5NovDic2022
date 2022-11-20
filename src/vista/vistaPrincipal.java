@@ -4,6 +4,7 @@
  */
 package vista;
 
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -172,4 +173,17 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public JButton getjButton3() {
+        return jButton3;
+    }
 }
