@@ -3,14 +3,9 @@ package Utils;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Objects;
-import java.util.stream.Stream;
 
 public class Employee {
     private int id;
@@ -73,12 +68,7 @@ public class Employee {
 
     public Object[] getEmployeeObjectArray(){
         JLabel jLabel = new JLabel();
-        //File file = new File(photo);
-
         try {
-            //BufferedImage bufferedImage = ImageIO.read(file);
-            //ImageIcon imageIcon = new ImageIcon(bufferedImage);
-
             jLabel.setIcon(show(this.photo));
         } catch (Exception e) {
             e.printStackTrace();
@@ -101,18 +91,9 @@ public class Employee {
             image = ImageIO.read(urlStream);
             Image i = image.getScaledInstance(60, 60, Image.SCALE_SMOOTH);
             return new ImageIcon(i);
-            //JFrame frame = new JFrame();
-            //JLabel lblimage = new JLabel(new ImageIcon(image));
-            //frame.getContentPane().add(lblimage, BorderLayout.CENTER);
-            //frame.setSize(image.getWidth(null) + 50, image.getHeight(null) + 50);
-            //frame.setVisible(true);
-
         } catch (Exception e) {
-            //System.out.println("Something went wrong, sorry:" + e.toString());
-            //e.printStackTrace();
             return new ImageIcon("felix.png");
         }
-        //return null;
     }
 
 

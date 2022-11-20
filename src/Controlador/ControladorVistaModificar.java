@@ -52,16 +52,6 @@ public class ControladorVistaModificar implements ActionListener {
         }catch (NumberFormatException ex){
             indexToUpdate = 0;
         }
-        /*
-        for(String value : valuesToUpdate){
-            if(value.equals("")){
-                nullValuesToUpdate = true;
-            }
-        }
-        for(Employee emp : employees){
-            System.out.println(emp.toString());
-        }
-        if(indexToUpdate > 0) && !nullValuesToUpdate*/
         if((indexToUpdate > 0 )){
             for(Employee emp : employees){
                 if(emp.getId() == Integer.parseInt(valuesToUpdate[0])){
@@ -96,10 +86,7 @@ public class ControladorVistaModificar implements ActionListener {
                     "No se modificó algún empleado",
                     "Update Employee",
                     JOptionPane.INFORMATION_MESSAGE);
-        }/*
-        for(Employee emp : employees){
-            System.out.println(emp.toString());
-        }*/
+        }
     }
 
     public pantallaModificar getVistaModificar() {
@@ -125,5 +112,10 @@ public class ControladorVistaModificar implements ActionListener {
 
     public String[] getValuesToUpdate() {
         return valuesToUpdate;
+
+    }
+
+    public JButton getBotonRegrear(){
+        return this.vistaModificar.getRegresarButton();
     }
 }
