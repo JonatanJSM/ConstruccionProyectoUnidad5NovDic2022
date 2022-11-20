@@ -20,19 +20,19 @@
         "photo": "https://jsonformatter.org/img/Robert-Downey-Jr.jpg"
       },
       {
-         "id": "5",
+         "id": "4",
          "firstName": "Pedro",
          "lastName": "Manzano",
          "photo": "felix.png"
       },
       {
-         "id": "6",
+         "id": "5",
          "firstName": "Juan",
          "lastName": "Gonzales",
          "photo": "felix.png"
       },
       {
-         "id": "7",
+         "id": "6",
          "firstName": "Diego",
          "lastName": "Perez",
          "photo": "felix.png"

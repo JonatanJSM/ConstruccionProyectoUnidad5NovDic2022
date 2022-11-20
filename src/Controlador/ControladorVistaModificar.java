@@ -1,6 +1,7 @@
 package Controlador;
 
 import Utils.Employee;
+import Utils.employeeModifier;
 import vista.pantallaModificar;
 
 import javax.swing.*;
@@ -23,6 +24,8 @@ public class ControladorVistaModificar implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.vistaModificar.getmodificarButton()){
             storeUpdateValues();
+            employeeModifier modifierEmployee = new employeeModifier();
+            modifierEmployee.modifyEmployee(valuesToUpdate);
             updateEmployees();
         }
 
