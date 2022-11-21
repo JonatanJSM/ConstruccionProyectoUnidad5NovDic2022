@@ -20,6 +20,8 @@ public class ControladorVistaModificar implements ActionListener {
         this.vistaModificar.getmodificarButton().addActionListener(this);
     }
 
+    public ControladorVistaModificar(){}
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.vistaModificar.getmodificarButton()){
@@ -112,7 +114,6 @@ public class ControladorVistaModificar implements ActionListener {
 
     public String[] getValuesToUpdate() {
         return valuesToUpdate;
-
     }
 
     public JButton getBotonRegrear(){

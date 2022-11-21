@@ -14,32 +14,39 @@ public class employeeModifier {
         ValidarLectura v = new ValidarLectura("json2.txt");
         arrayJSONobject = v.getArrayJSONobject();
         jsonObject = v.getJsonObject();
-        System.out.println("Antes: "+ arrayJSONobject);
+        //System.out.println("Antes: "+ arrayJSONobject);
     }
 
-    public void modifyEmployee(String[] elementsEmployee){
+    public boolean modifyEmployee(String[] elementsEmployee){
         try{
-            int index = Integer.parseInt(elementsEmployee[0]);
-            System.out.println("indice+ "+index);
-            JSONObject tempEmployee = (JSONObject) arrayJSONobject.get(index-1);
+            if(elementsEmployee[0].isEmpty() || arrayJSONobject.size()<Integer.parseInt(elementsEmployee[0])){
+                return false;
+            }
+            else {
+                int index = Integer.parseInt(elementsEmployee[0]);
+                //System.out.println("indice+ " + index);
+                JSONObject tempEmployee = (JSONObject) arrayJSONobject.get(index - 1);
 
-            if(!elementsEmployee[1].isEmpty())
-                tempEmployee.replace("firstName",elementsEmployee[1]);
-            if(!elementsEmployee[2].isEmpty())
-                tempEmployee.replace("lastName",elementsEmployee[2]);
-            if(!elementsEmployee[3].isEmpty())
-                tempEmployee.replace("photo",elementsEmployee[3]);
+                if (!elementsEmployee[1].isEmpty())
+                    tempEmployee.replace("firstName", elementsEmployee[1]);
+                if (!elementsEmployee[2].isEmpty())
+                    tempEmployee.replace("lastName", elementsEmployee[2]);
+                if (!elementsEmployee[3].isEmpty())
+                    tempEmployee.replace("photo", elementsEmployee[3]);
 
-            System.out.println("Despues: "+ arrayJSONobject);
-            updateJSONFile();
+                //System.out.println("Despues: " + arrayJSONobject);
+                updateJSONFile();
+                return true;
+            }
         }catch(NullPointerException | NumberFormatException e){
+            return false;
         }
     }
 
     private void updateJSONFile(){
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("json2.txt"));
-            System.out.println("resultado es: "+jsonObject.toString());
+            //System.out.println("resultado es: "+jsonObject.toString());
             String x = jsonObject.toString();
             bw.write("");
             bw.write(x);
@@ -47,5 +54,9 @@ public class employeeModifier {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public JSONArray getArrayJSONobject() {
+        return arrayJSONobject;
     }
 }

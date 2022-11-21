@@ -27,6 +27,8 @@ public class controladorVistaPrincipal implements ActionListener {
         showEmployeesTable();
     }
 
+    public controladorVistaPrincipal(){}
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.vistaprincipal.getjButton3()){
