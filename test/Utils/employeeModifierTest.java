@@ -23,7 +23,7 @@ public class employeeModifierTest {
     @Test
     @DisplayName("No es correcto el formato del ID")
     public void IdEmployee(){
-        String camposAModificar[] = {"6","Pepito","Usumaki",""};
+        String camposAModificar[] = {"wo,","Pepito","Usumaki",""};
         boolean result = employeeModifier.modifyEmployee(camposAModificar);
         assertTrue(result);
     }
@@ -33,7 +33,7 @@ public class employeeModifierTest {
     public void testLongitudArray(){
         int lognntiudadAntes, longitudDespues;
         lognntiudadAntes = employeeModifier.getArrayJSONobject().toString().length();
-        String camposAModificar[] = {"2","","",""};
+        String camposAModificar[] = {"2","Job","",""};
         employeeModifier.modifyEmployee(camposAModificar);
         longitudDespues = employeeModifier.getArrayJSONobject().toString().length();
         assertFalse(lognntiudadAntes == longitudDespues);
@@ -54,7 +54,7 @@ public class employeeModifierTest {
     @Test
     @DisplayName("Longitud no es la adecuada")
     public void IdEmployeeSize(){
-        String camposAModificar[] = {"1","","cruise",""};
+        String camposAModificar[] = {"10","","cruise",""};
         boolean result = employeeModifier.modifyEmployee(camposAModificar);
         assertTrue(result);
     }

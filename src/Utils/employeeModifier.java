@@ -23,20 +23,25 @@ public class employeeModifier {
                 return false;
             }
             else {
-                int index = Integer.parseInt(elementsEmployee[0]);
-                //System.out.println("indice+ " + index);
-                JSONObject tempEmployee = (JSONObject) arrayJSONobject.get(index - 1);
-
-                if (!elementsEmployee[1].isEmpty())
-                    tempEmployee.replace("firstName", elementsEmployee[1]);
-                if (!elementsEmployee[2].isEmpty())
-                    tempEmployee.replace("lastName", elementsEmployee[2]);
-                if (!elementsEmployee[3].isEmpty())
-                    tempEmployee.replace("photo", elementsEmployee[3]);
-
-                //System.out.println("Despues: " + arrayJSONobject);
-                updateJSONFile();
-                return true;
+                boolean result = false;
+                int i = 0;
+                while (i < arrayJSONobject.size()){
+                    JSONObject tempEmployee = (JSONObject) arrayJSONobject.get(i);
+                    int x = Integer.parseInt((String) tempEmployee.get("id"));
+                    if(x == Integer.parseInt(elementsEmployee[0])){
+                        if (!elementsEmployee[1].isEmpty())
+                            tempEmployee.replace("firstName", elementsEmployee[1]);
+                        if (!elementsEmployee[2].isEmpty())
+                            tempEmployee.replace("lastName", elementsEmployee[2]);
+                        if (!elementsEmployee[3].isEmpty())
+                            tempEmployee.replace("photo", elementsEmployee[3]);
+                        i = arrayJSONobject.size() + 2;
+                        updateJSONFile();
+                        result = true;
+                    }
+                    i++;
+                }
+                return result;
             }
         }catch(NullPointerException | NumberFormatException e){
             return false;
