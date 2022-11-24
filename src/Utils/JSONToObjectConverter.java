@@ -25,6 +25,14 @@ public class JSONToObjectConverter {
         }
     }
 
+    public void removeNullInstances(){
+        for(Employee emp : arrayEmployee){
+            if(emp.isNull()){
+                arrayEmployee.remove(emp);
+            }
+        }
+    }
+
     public ArrayList<Employee> getArrayEmployee() {
         return arrayEmployee;
     }

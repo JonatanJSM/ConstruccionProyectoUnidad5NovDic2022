@@ -2,10 +2,10 @@ package Utils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.Objects;
+import java.awt.*;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class Employee {
     private int id;
@@ -68,18 +68,33 @@ public class Employee {
 
     public Object[] getEmployeeObjectArray(){
         JLabel jLabel = new JLabel();
-        File file = new File(photo);
-
         try {
-            BufferedImage bufferedImage = ImageIO.read(file);
-            ImageIcon imageIcon = new ImageIcon(bufferedImage);
-
-            jLabel.setIcon(imageIcon);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            jLabel.setIcon(show(this.photo));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
 
         return new Object[] {id, firstName, lastName,jLabel};
     }
+
+    public ImageIcon show(String urlLocation) {
+        Image image = null;
+
+        try {
+            URL url = new URL(urlLocation);
+            URLConnection conn = url.openConnection();
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+
+            conn.connect();
+            InputStream urlStream = conn.getInputStream();
+            image = ImageIO.read(urlStream);
+            Image i = image.getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+            return new ImageIcon(i);
+        } catch (Exception e) {
+            return new ImageIcon("felix.png");
+        }
+    }
+
+
 }

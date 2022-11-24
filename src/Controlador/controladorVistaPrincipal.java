@@ -1,29 +1,58 @@
 package Controlador;
 
 import Utils.Employee;
+import vista.pantallaModificar;
 import vista.vistaPrincipal;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class controladorVistaPrincipal implements ActionListener {
     private vistaPrincipal vistaprincipal;
-    private Iterator<Employee> employeeIterator;
+    private ArrayList<Employee> employees;
 
-    public controladorVistaPrincipal(vistaPrincipal vistaprincipal, Iterator<Employee> employeeIterator) {
+    private pantallaModificar vistaModificar = new pantallaModificar();
+    private final ControladorVistaModificar controladorModificar = new ControladorVistaModificar(vistaModificar);
+
+    public controladorVistaPrincipal(vistaPrincipal vistaprincipal, ArrayList<Employee> employeeIterator) {
         this.vistaprincipal = vistaprincipal;
-        this.employeeIterator = employeeIterator;
+        this.employees = employeeIterator;
+        this.vistaprincipal.getjButton1().addActionListener(this);
+        this.vistaprincipal.getjButton2().addActionListener(this);
+        this.vistaprincipal.getjButton3().addActionListener(this);
+
+        this.controladorModificar.getVistaModificar().getRegresarButton().addActionListener(this);
         showEmployeesTable();
     }
 
+    public controladorVistaPrincipal(){}
+
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == this.vistaprincipal.getjButton3()){
+            controladorModificar.getVistaModificar().getTextField1().setText("");
+            controladorModificar.getVistaModificar().getTextField2().setText("");
+            controladorModificar.getVistaModificar().getTextField3().setText("");
+            controladorModificar.getVistaModificar().getTextField4().setText("");
+            controladorModificar.setEmployees(employees);
+            controladorModificar.getVistaModificar().setVisible(true);
+
+        }
+        if(e.getSource() == this.controladorModificar.getBotonRegrear()){
+            if(controladorModificar.getUpdated()){
+                employees = controladorModificar.getEmployees();
+                this.vistaprincipal.getTablaModelo1().setRowCount(0);
+                showEmployeesTable();
+            }
+            controladorModificar.setUpdated(false);
+        }
     }
 
     public void showEmployeesTable(){
-        while(employeeIterator.hasNext()){
-            this.vistaprincipal.getTablaModelo1().addRow(employeeIterator.next().getEmployeeObjectArray());
+        for(Employee employee : employees){
+            this.vistaprincipal.getTablaModelo1().addRow(employee.getEmployeeObjectArray());
         }
     }
 }

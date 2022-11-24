@@ -1,6 +1,5 @@
-package test;
+package Utils;
 
-import Utils.ValidarLectura;
 import org.json.simple.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,11 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  *
  * @author fer98
  */
-public class ValidarLecturaTest {
+public class ValidarLectura1Test {
     private String path = "json2.txt";
     private static ValidarLectura validacionJSON;
     
-    public ValidarLecturaTest() {
+    public ValidarLectura1Test() {
     }
     
     @BeforeEach
