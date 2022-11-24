@@ -1,6 +1,7 @@
 package Controlador;
 
 import Utils.Employee;
+import Utils.employeeModifier;
 import vista.pantallaModificar;
 
 import javax.swing.*;
@@ -19,10 +20,14 @@ public class ControladorVistaModificar implements ActionListener {
         this.vistaModificar.getmodificarButton().addActionListener(this);
     }
 
+    public ControladorVistaModificar(){}
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.vistaModificar.getmodificarButton()){
             storeUpdateValues();
+            employeeModifier modifierEmployee = new employeeModifier();
+            modifierEmployee.modifyEmployee(valuesToUpdate);
             updateEmployees();
         }
 
@@ -49,16 +54,6 @@ public class ControladorVistaModificar implements ActionListener {
         }catch (NumberFormatException ex){
             indexToUpdate = 0;
         }
-        /*
-        for(String value : valuesToUpdate){
-            if(value.equals("")){
-                nullValuesToUpdate = true;
-            }
-        }
-        for(Employee emp : employees){
-            System.out.println(emp.toString());
-        }
-        if(indexToUpdate > 0) && !nullValuesToUpdate*/
         if((indexToUpdate > 0 )){
             for(Employee emp : employees){
                 if(emp.getId() == Integer.parseInt(valuesToUpdate[0])){
@@ -93,10 +88,7 @@ public class ControladorVistaModificar implements ActionListener {
                     "No se modificó algún empleado",
                     "Update Employee",
                     JOptionPane.INFORMATION_MESSAGE);
-        }/*
-        for(Employee emp : employees){
-            System.out.println(emp.toString());
-        }*/
+        }
     }
 
     public pantallaModificar getVistaModificar() {
@@ -122,5 +114,9 @@ public class ControladorVistaModificar implements ActionListener {
 
     public String[] getValuesToUpdate() {
         return valuesToUpdate;
+    }
+
+    public JButton getBotonRegrear(){
+        return this.vistaModificar.getRegresarButton();
     }
 }

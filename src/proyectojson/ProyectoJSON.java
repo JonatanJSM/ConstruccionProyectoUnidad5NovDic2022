@@ -30,8 +30,6 @@ public class ProyectoJSON {
 
         VistaPrincipal.setVisible(true);
 
-        //pantallaModificar pantalla = new pantallaModificar();
-        //pantalla.setVisible(true);
 
     }
     

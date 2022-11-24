@@ -27,6 +27,8 @@ public class controladorVistaPrincipal implements ActionListener {
         showEmployeesTable();
     }
 
+    public controladorVistaPrincipal(){}
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.vistaprincipal.getjButton3()){
@@ -38,17 +40,11 @@ public class controladorVistaPrincipal implements ActionListener {
             controladorModificar.getVistaModificar().setVisible(true);
 
         }
-        if(e.getSource() == this.controladorModificar.getVistaModificar().getRegresarButton()){
+        if(e.getSource() == this.controladorModificar.getBotonRegrear()){
             if(controladorModificar.getUpdated()){
                 employees = controladorModificar.getEmployees();
                 this.vistaprincipal.getTablaModelo1().setRowCount(0);
                 showEmployeesTable();
-                /*
-                String[] modificaciones = controladorModificar.getValuesToUpdate();
-                for (String modificacione : modificaciones) {
-                    System.out.println(modificacione);
-                }
-                */
             }
             controladorModificar.setUpdated(false);
         }
