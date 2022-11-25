@@ -10,6 +10,7 @@ public class pantallaModificar extends JFrame{
     private JButton regresarButton;
     private JButton modificarButton;
     private JTextField textField3;
+    private JButton eliminarButton;
 
     public pantallaModificar(){
         setContentPane(panel1);

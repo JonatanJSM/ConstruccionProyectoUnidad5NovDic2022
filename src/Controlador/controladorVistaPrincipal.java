@@ -6,10 +6,12 @@ import vista.vistaPrincipal;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class controladorVistaPrincipal implements ActionListener {
+public class controladorVistaPrincipal implements ActionListener, MouseListener {
     private vistaPrincipal vistaprincipal;
     private ArrayList<Employee> employees;
 
@@ -22,6 +24,7 @@ public class controladorVistaPrincipal implements ActionListener {
         this.vistaprincipal.getjButton1().addActionListener(this);
         this.vistaprincipal.getjButton2().addActionListener(this);
         this.vistaprincipal.getjButton3().addActionListener(this);
+        this.vistaprincipal.getjTable1().addMouseListener((MouseListener) this);
 
         this.controladorModificar.getVistaModificar().getRegresarButton().addActionListener(this);
         showEmployeesTable();
@@ -32,12 +35,7 @@ public class controladorVistaPrincipal implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.vistaprincipal.getjButton3()){
-            controladorModificar.getVistaModificar().getTextField1().setText("");
-            controladorModificar.getVistaModificar().getTextField2().setText("");
-            controladorModificar.getVistaModificar().getTextField3().setText("");
-            controladorModificar.getVistaModificar().getTextField4().setText("");
-            controladorModificar.setEmployees(employees);
-            controladorModificar.getVistaModificar().setVisible(true);
+
 
         }
         if(e.getSource() == this.controladorModificar.getBotonRegrear()){
@@ -48,6 +46,41 @@ public class controladorVistaPrincipal implements ActionListener {
             }
             controladorModificar.setUpdated(false);
         }
+
+    }
+
+    public void mouseClicked(MouseEvent e){
+        if(e.getClickCount() ==2 ){
+            String aux =  vistaprincipal.getjTable1().getValueAt(vistaprincipal.getjTable1().getSelectedRow(),0).toString();
+            controladorModificar.getVistaModificar().getTextField1().setText(aux);
+            controladorModificar.getVistaModificar().getTextField2().setText((String) vistaprincipal.getjTable1().getValueAt(vistaprincipal.getjTable1().getSelectedRow(),1));
+            controladorModificar.getVistaModificar().getTextField3().setText("");
+            controladorModificar.getVistaModificar().getTextField4().setText((String) vistaprincipal.getjTable1().getValueAt(vistaprincipal.getjTable1().getSelectedRow(),2));
+            controladorModificar.setEmployees(employees);
+            controladorModificar.getVistaModificar().setVisible(true);
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        if(e.getClickCount() ==2 ){
+            System.out.println("hola"+ vistaprincipal.getjTable1().getSelectedRow());
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 
     public void showEmployeesTable(){
