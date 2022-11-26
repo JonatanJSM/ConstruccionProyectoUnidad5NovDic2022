@@ -2,7 +2,6 @@ package Utils;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
