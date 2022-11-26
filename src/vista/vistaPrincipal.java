@@ -42,9 +42,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
         jLabel1 = new JLabel();
         jScrollPane1 = new JScrollPane();
         jTable1 = new JTable();
+
         jButton1 = new JButton();
-        jButton2 = new JButton();
-        jButton3 = new JButton();
 
         jTable1 = new JTable(){
             @Override
@@ -72,22 +71,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Eliminar");
+        jButton1.setText("Agregar");
         jButton1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Agregar");
-        jButton2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Modificar");
-        jButton3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
@@ -108,12 +93,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
                         .addGap(194, 194, 194)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton1)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -125,9 +106,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton1))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -182,25 +161,15 @@ public class vistaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-
-
+    
     public JButton getjButton1() {
         return jButton1;
-    }
-
-    public JButton getjButton2() {
-        return jButton2;
-    }
-
-    public JButton getjButton3() {
-        return jButton3;
     }
 
     public JTable getjTable1(){
