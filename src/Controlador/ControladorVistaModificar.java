@@ -14,10 +14,14 @@ public class ControladorVistaModificar implements ActionListener {
     private String[] valuesToUpdate = new String[4];
     private ArrayList<Employee> employees;
     private boolean updated = false;
+    private boolean deleted = false;
+
+    private int indexToDelete;
     public ControladorVistaModificar(pantallaModificar vistaModificar){
         this.vistaModificar = vistaModificar;
         this.vistaModificar.getRegresarButton().addActionListener(this);
         this.vistaModificar.getmodificarButton().addActionListener(this);
+        this.vistaModificar.getEliminarButton().addActionListener(this);
     }
 
     public ControladorVistaModificar(){}
@@ -35,6 +39,42 @@ public class ControladorVistaModificar implements ActionListener {
             this.vistaModificar.dispose();
             System.gc();
         }
+
+        if(e.getSource() == this.vistaModificar.getEliminarButton()){
+            deleteEmployee();
+        }
+    }
+
+    public void deleteEmployee(){
+        try{
+            indexToDelete = Integer.parseInt(this.vistaModificar.getTextField1().getText());
+        }catch (NumberFormatException e){
+            indexToDelete = -1;
+        }
+        deleted = false;
+        if(indexToDelete >= 0){
+            for(int i = 0 ; i < employees.size() ; i++){
+                if (employees.get(i).getId() ==  indexToDelete) {
+                    employees.remove(i);
+                    deleted = true;
+                    break;
+                }
+            }
+        }
+        if(deleted){
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Se ha eliminado el empleado con id " + indexToDelete,
+                    "Delete Employee",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(
+                    null,
+                    "No se pudo eliminar el empleado con id " + indexToDelete,
+                    "Delete Employee",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }
 
     public void storeUpdateValues(){
@@ -110,6 +150,22 @@ public class ControladorVistaModificar implements ActionListener {
 
     public boolean getUpdated() {
         return updated;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setIndexToDelete(int indexToDelete) {
+        this.indexToDelete = indexToDelete;
+    }
+
+    public int getIndexToDelete() {
+        return indexToDelete;
     }
 
     public String[] getValuesToUpdate() {

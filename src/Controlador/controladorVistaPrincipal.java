@@ -21,9 +21,8 @@ public class controladorVistaPrincipal implements ActionListener, MouseListener 
     public controladorVistaPrincipal(vistaPrincipal vistaprincipal, ArrayList<Employee> employeeIterator) {
         this.vistaprincipal = vistaprincipal;
         this.employees = employeeIterator;
+        //jButton1 es el botón para agregar empleado
         this.vistaprincipal.getjButton1().addActionListener(this);
-        this.vistaprincipal.getjButton2().addActionListener(this);
-        this.vistaprincipal.getjButton3().addActionListener(this);
         this.vistaprincipal.getjTable1().addMouseListener((MouseListener) this);
 
         this.controladorModificar.getVistaModificar().getRegresarButton().addActionListener(this);
@@ -34,8 +33,8 @@ public class controladorVistaPrincipal implements ActionListener, MouseListener 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == this.vistaprincipal.getjButton3()){
-
+        if(e.getSource() == this.vistaprincipal.getjButton1()){
+            System.out.println("Agregando empleado (por implementar...)");
 
         }
         if(e.getSource() == this.controladorModificar.getBotonRegrear()){
@@ -45,6 +44,12 @@ public class controladorVistaPrincipal implements ActionListener, MouseListener 
                 showEmployeesTable();
             }
             controladorModificar.setUpdated(false);
+            if(controladorModificar.getDeleted()){
+                employees = controladorModificar.getEmployees();
+                this.vistaprincipal.getTablaModelo1().setRowCount(0);
+                showEmployeesTable();
+            }
+            controladorModificar.setDeleted(false);
         }
 
     }
