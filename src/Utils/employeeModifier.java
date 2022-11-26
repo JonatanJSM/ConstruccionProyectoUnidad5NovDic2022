@@ -14,7 +14,6 @@ public class employeeModifier {
         ValidarLectura v = new ValidarLectura("json2.txt");
         arrayJSONobject = v.getArrayJSONobject();
         jsonObject = v.getJsonObject();
-        //System.out.println("Antes: "+ arrayJSONobject);
     }
 
     public boolean modifyEmployee(String[] elementsEmployee){
@@ -46,6 +45,22 @@ public class employeeModifier {
         }catch(NullPointerException | NumberFormatException e){
             return false;
         }
+    }
+
+    public boolean detelteEmployee(int indexToDelete){
+        boolean result = false;
+        int i = 0;
+        while (i < arrayJSONobject.size()){
+            JSONObject tempEmployee = (JSONObject) arrayJSONobject.get(i);
+            int x = Integer.parseInt((String) tempEmployee.get("id"));
+            if(x == indexToDelete){
+                arrayJSONobject.remove(i);
+                updateJSONFile();
+                result = true;
+            }
+            i++;
+        }
+        return result;
     }
 
     private void updateJSONFile(){
