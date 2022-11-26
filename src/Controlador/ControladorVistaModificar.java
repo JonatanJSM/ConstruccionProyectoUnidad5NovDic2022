@@ -3,7 +3,6 @@ package Controlador;
 import Utils.Employee;
 import Utils.employeeModifier;
 import vista.pantallaModificar;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,6 +41,10 @@ public class ControladorVistaModificar implements ActionListener {
 
         if(e.getSource() == this.vistaModificar.getEliminarButton()){
             deleteEmployee();
+            if(deleted){
+                employeeModifier modifierEmployee = new employeeModifier();
+                modifierEmployee.detelteEmployee(indexToDelete);
+            }
         }
     }
 
