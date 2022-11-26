@@ -10,13 +10,13 @@ public class pantallaModificar extends JFrame{
     private JButton regresarButton;
     private JButton modificarButton;
     private JTextField textField3;
+    private JButton eliminarButton;
 
     public pantallaModificar(){
         setContentPane(panel1);
         setTitle("Modificando employee");
         setSize(650,300);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        //setVisible(true);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     public JTextField getTextField1(){
@@ -43,4 +43,7 @@ public class pantallaModificar extends JFrame{
         return modificarButton;
     }
 
+    public JButton getEliminarButton() {
+        return eliminarButton;
+    }
 }

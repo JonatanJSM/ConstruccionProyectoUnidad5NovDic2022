@@ -1,15 +1,9 @@
 package proyectojson;
 
 import Controlador.controladorVistaPrincipal;
-import Utils.Employee;
 import Utils.JSONToObjectConverter;
-import Utils.NullEmployee;
 import Utils.ValidarLectura;
-import org.json.simple.JSONObject;
-import vista.pantallaModificar;
 import vista.vistaPrincipal;
-
-import java.util.ArrayList;
 
 /**
  *
@@ -29,8 +23,5 @@ public class ProyectoJSON {
         controladorVistaPrincipal control = new controladorVistaPrincipal(VistaPrincipal, converter.getArrayEmployee());
 
         VistaPrincipal.setVisible(true);
-
-
     }
-    
 }
