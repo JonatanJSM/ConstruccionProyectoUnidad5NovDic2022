@@ -1,9 +1,6 @@
 <component name="libraryTable">
   <library name="ConstruccionProyectoUnidad5NovDic2022">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/json-simple-1.1.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/junit4.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES />
   </library>
