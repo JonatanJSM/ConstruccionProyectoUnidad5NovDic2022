@@ -13,9 +13,7 @@ public class Employee {
     private String lastName;
     private String photo;
 
-    public Employee() {
-
-    }
+    public Employee() {}
 
     public Employee(int id, String firstName, String lastName, String photo){
         this.id = id;

@@ -3,13 +3,12 @@ package Controlador;
 import Utils.Employee;
 import vista.pantallaModificar;
 import vista.vistaPrincipal;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.Iterator;
+
 
 public class controladorVistaPrincipal implements ActionListener, MouseListener {
     private vistaPrincipal vistaprincipal;
@@ -21,9 +20,8 @@ public class controladorVistaPrincipal implements ActionListener, MouseListener 
     public controladorVistaPrincipal(vistaPrincipal vistaprincipal, ArrayList<Employee> employeeIterator) {
         this.vistaprincipal = vistaprincipal;
         this.employees = employeeIterator;
+        //jButton1 es el botón para agregar empleado
         this.vistaprincipal.getjButton1().addActionListener(this);
-        this.vistaprincipal.getjButton2().addActionListener(this);
-        this.vistaprincipal.getjButton3().addActionListener(this);
         this.vistaprincipal.getjTable1().addMouseListener((MouseListener) this);
 
         this.controladorModificar.getVistaModificar().getRegresarButton().addActionListener(this);
@@ -34,8 +32,8 @@ public class controladorVistaPrincipal implements ActionListener, MouseListener 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == this.vistaprincipal.getjButton3()){
-
+        if(e.getSource() == this.vistaprincipal.getjButton1()){
+            System.out.println("Agregando empleado (por implementar...)");
 
         }
         if(e.getSource() == this.controladorModificar.getBotonRegrear()){
@@ -45,6 +43,12 @@ public class controladorVistaPrincipal implements ActionListener, MouseListener 
                 showEmployeesTable();
             }
             controladorModificar.setUpdated(false);
+            if(controladorModificar.getDeleted()){
+                employees = controladorModificar.getEmployees();
+                this.vistaprincipal.getTablaModelo1().setRowCount(0);
+                showEmployeesTable();
+            }
+            controladorModificar.setDeleted(false);
         }
 
     }
@@ -62,26 +66,16 @@ public class controladorVistaPrincipal implements ActionListener, MouseListener 
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-        if(e.getClickCount() ==2 ){
-            System.out.println("hola"+ vistaprincipal.getjTable1().getSelectedRow());
-        }
-    }
+    public void mousePressed(MouseEvent e) {}
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
+    public void mouseReleased(MouseEvent e) {}
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
+    public void mouseEntered(MouseEvent e) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseExited(MouseEvent e) {}
 
     public void showEmployeesTable(){
         for(Employee employee : employees){
