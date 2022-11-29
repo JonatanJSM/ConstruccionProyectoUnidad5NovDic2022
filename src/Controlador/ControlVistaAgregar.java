@@ -64,20 +64,20 @@ public class ControlVistaAgregar implements ActionListener {
                     }
                 }
             }
-            if (aggregated){
+            if (aggregated && indexToAdd >= 0){
                 employees.add(new Employee(indexToAdd,valuesToAdd[1],valuesToAdd[2],valuesToAdd[3]));
             }
         }
         if(aggregated && indexToAdd >= 0){
             JOptionPane.showMessageDialog(
                     null,
-                    "Se ha agregado el empleado",
+                    "Se ha agregado un nuevo empleado",
                     "Add Employee",
                     JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(
                     null,
-                    "No se pudo agregar el empleado con id " + indexToAdd,
+                    "No se pudo agregar al nuevo empleado",
                     "Add Employee",
                     JOptionPane.INFORMATION_MESSAGE);
         }
@@ -95,7 +95,7 @@ public class ControlVistaAgregar implements ActionListener {
     }
 
     public void validateEmpytData(){
-        if(Objects.equals(valuesToAdd[1], "") || Objects.equals(valuesToAdd[2], "") || Objects.equals(valuesToAdd[3], "")){
+        if(Objects.equals(valuesToAdd[1], "") || Objects.equals(valuesToAdd[2], "")){
             aggregated = false;
         }
     }
