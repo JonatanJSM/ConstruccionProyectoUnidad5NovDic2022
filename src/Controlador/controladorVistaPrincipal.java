@@ -1,6 +1,7 @@
 package Controlador;
 
 import Utils.Employee;
+import vista.pantallaAgregar;
 import vista.pantallaModificar;
 import vista.vistaPrincipal;
 import java.awt.event.ActionEvent;
@@ -17,6 +18,9 @@ public class controladorVistaPrincipal implements ActionListener, MouseListener 
     private pantallaModificar vistaModificar = new pantallaModificar();
     private final ControladorVistaModificar controladorModificar = new ControladorVistaModificar(vistaModificar);
 
+    private pantallaAgregar vistaAgregar = new pantallaAgregar();
+    private final ControlVistaAgregar controlVistaAgregar = new ControlVistaAgregar(vistaAgregar);
+
     public controladorVistaPrincipal(vistaPrincipal vistaprincipal, ArrayList<Employee> employeeIterator) {
         this.vistaprincipal = vistaprincipal;
         this.employees = employeeIterator;
@@ -25,6 +29,7 @@ public class controladorVistaPrincipal implements ActionListener, MouseListener 
         this.vistaprincipal.getjTable1().addMouseListener((MouseListener) this);
 
         this.controladorModificar.getVistaModificar().getRegresarButton().addActionListener(this);
+        this.controlVistaAgregar.getVistaAgregar().getRegresarButton().addActionListener(this);
         showEmployeesTable();
     }
 
@@ -33,9 +38,20 @@ public class controladorVistaPrincipal implements ActionListener, MouseListener 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.vistaprincipal.getjButton1()){
-            System.out.println("Agregando empleado (por implementar...)");
+            this.controlVistaAgregar.setEmployees(employees);
+            this.controlVistaAgregar.getVistaAgregar().setVisible(true);
+        }
+
+        if(e.getSource() == this.controlVistaAgregar.getBotonRegrear()){
+            if(controlVistaAgregar.getAggregated()){
+                employees = controlVistaAgregar.getEmployees();
+                this.vistaprincipal.getTablaModelo1().setRowCount(0);
+                showEmployeesTable();
+            }
+            controlVistaAgregar.setAggregated(false);
 
         }
+
         if(e.getSource() == this.controladorModificar.getBotonRegrear()){
             if(controladorModificar.getUpdated()){
                 employees = controladorModificar.getEmployees();
