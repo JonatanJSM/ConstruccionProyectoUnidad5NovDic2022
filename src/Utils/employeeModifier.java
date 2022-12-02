@@ -2,6 +2,8 @@ package Utils;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import javax.swing.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -46,6 +48,30 @@ public class employeeModifier {
         }
     }
 
+    public boolean insertEmployee(String[] elementsEmployee){
+        try {
+            int newID = Integer.parseInt(elementsEmployee[0]);
+            boolean result = false;
+            for (String employeeField : elementsEmployee){
+                if(employeeField.isEmpty()){
+                    return false;
+                }
+            }
+            JSONObject employeeToAdd = new JSONObject();
+            employeeToAdd.put("firstName",elementsEmployee[1]);
+            employeeToAdd.put("lastName",elementsEmployee[2]);
+            employeeToAdd.put("photo",elementsEmployee[3]);
+            employeeToAdd.put("id",elementsEmployee[0]);
+            updateJSONFile(employeeToAdd);
+            return true;
+        }catch (NumberFormatException e){
+            return false;
+        }
+
+
+
+    }
+
     public boolean detelteEmployee(int indexToDelete){
         boolean result = false;
         int i = 0;
@@ -70,6 +96,27 @@ public class employeeModifier {
             bw.write("");
             bw.write(x);
             bw.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void updateJSONFile(JSONObject newObject){
+        //String newArray = arrayJSONobject.toJSONString();
+        arrayJSONobject.add(newObject);
+        JSONObject newInnerJSON = new JSONObject();
+        newInnerJSON.put("employee",arrayJSONobject);
+        JSONObject newJSON = new JSONObject();
+        newJSON.put("employees", newInnerJSON);
+        System.out.println(newJSON);
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("json2.txt"));
+            String x = newJSON.toString();
+            bw.write("");
+            bw.write(x);
+            bw.close();
+            ValidarLectura v = new ValidarLectura("json2.txt");
+            arrayJSONobject = v.getArrayJSONobject();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

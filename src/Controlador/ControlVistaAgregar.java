@@ -1,6 +1,7 @@
 package Controlador;
 
 import Utils.Employee;
+import Utils.employeeModifier;
 import vista.pantallaAgregar;
 
 import javax.swing.*;
@@ -28,8 +29,11 @@ public class ControlVistaAgregar implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.vistaAgregar.getGuardarButton()){
             storeNewValue();
-
             addNewEmployess();
+            if(aggregated){
+                employeeModifier modifierEmployee = new employeeModifier();
+                modifierEmployee.insertEmployee(valuesToAdd);
+            }
         }
 
         if(e.getSource() == this.vistaAgregar.getRegresarButton()){
