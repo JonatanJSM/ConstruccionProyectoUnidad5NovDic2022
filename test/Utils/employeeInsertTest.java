@@ -40,7 +40,7 @@ class employeeInsertTest {
     public void testLongitudArray(){
         int longitudAntes, longitudDespues;
         longitudAntes = employeeModifier.getArrayJSONobject().size();
-        String camposAInsertar[] = {"999","Hortensia","Gutierrez","https://i.pinimg.com/originals/f0/74/dc/f074dc9f568075e9b025c683c6599760.png"};
+        String camposAInsertar[] = {"id","Hortensia","Gutierrez","https://i.pinimg.com/originals/f0/74/dc/f074dc9f568075e9b025c683c6599760.png"};
         employeeModifier.insertEmployee(camposAInsertar);
         longitudDespues = employeeModifier.getArrayJSONobject().size();
         //System.out.println("LONGITUD_ANTES_ " + longitudAntes + " LONGITUD_DESPUES " + longitudDespues);
