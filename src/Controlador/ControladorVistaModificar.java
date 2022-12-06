@@ -85,7 +85,6 @@ public class ControladorVistaModificar implements ActionListener {
         valuesToUpdate[1] = this.vistaModificar.getTextField2().getText();
         valuesToUpdate[2] = this.vistaModificar.getTextField4().getText();
         valuesToUpdate[3] = this.vistaModificar.getTextField3().getText();
-
     }
 
     public void updateEmployees(){
